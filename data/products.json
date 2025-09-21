@@ -1,0 +1,176 @@
+[
+  {
+    "id": "arc-teryx",
+    "title": "Arc'teryx",
+    "price": 380,
+    "currency": "EUR",
+    "size": "160×230",
+    "shape": "rectangle",
+    "materials": [
+      "wool",
+      "acrylic"
+    ],
+    "images": [
+      "assets/products/arc-teryx/arc-teryx-1.jpg",
+      "assets/products/arc-teryx/arc-teryx-2.jpg",
+      "assets/products/arc-teryx/arc-teryx-3.jpg",
+      "assets/products/arc-teryx/arc-teryx-4.jpg",
+      "assets/products/arc-teryx/arc-teryx-5.jpg"
+    ],
+    "featured": true
+  },
+  {
+    "id": "blackhole",
+    "title": "BlackHole",
+    "price": 280,
+    "currency": "EUR",
+    "size": "160×230",
+    "shape": "rectangle",
+    "materials": [
+      "wool",
+      "acrylic"
+    ],
+    "images": [
+      "assets/products/blackhole/blackhole-1.jpg",
+      "assets/products/blackhole/blackhole-2.jpg",
+      "assets/products/blackhole/blackhole-3.jpg"
+    ],
+    "featured": true
+  },
+  {
+    "id": "homer-simpson",
+    "title": "Homer Simpson",
+    "price": 380,
+    "currency": "EUR",
+    "size": "160×230",
+    "shape": "rectangle",
+    "materials": [
+      "wool",
+      "acrylic"
+    ],
+    "images": [
+      "assets/products/homer-simpson/homer-simpson-1.jpg",
+      "assets/products/homer-simpson/homer-simpson-2.jpg",
+      "assets/products/homer-simpson/homer-simpson-3.jpg",
+      "assets/products/homer-simpson/homer-simpson-4.jpg",
+      "assets/products/homer-simpson/homer-simpson-5.jpg"
+    ],
+    "featured": true
+  },
+  {
+    "id": "homer-simpson-smal",
+    "title": "Homer Simpson Small",
+    "price": 260,
+    "currency": "EUR",
+    "size": "160×230",
+    "shape": "rectangle",
+    "materials": [
+      "wool",
+      "acrylic"
+    ],
+    "images": [
+      "assets/products/homer-simpson-smal/homer-simpson-smal-1.jpg",
+      "assets/products/homer-simpson-smal/homer-simpson-smal-2.jpg",
+      "assets/products/homer-simpson-smal/homer-simpson-smal-3.jpg"
+    ],
+    "featured": true
+  },
+  {
+    "id": "leafy",
+    "title": "Leafy",
+    "price": 420,
+    "currency": "EUR",
+    "size": "160×230",
+    "shape": "rectangle",
+    "materials": [
+      "wool",
+      "acrylic"
+    ],
+    "images": [
+      "assets/products/leafy/leafy-1.jpg",
+      "assets/products/leafy/leafy-2.jpg",
+      "assets/products/leafy/leafy-3.jpg",
+      "assets/products/leafy/leafy-4.jpg",
+      "assets/products/leafy/leafy-5.jpg"
+    ],
+    "featured": true
+  },
+  {
+    "id": "martial-artists",
+    "title": "Martial Artists",
+    "price": 380,
+    "currency": "EUR",
+    "size": "140×200",
+    "shape": "rectangle",
+    "materials": [
+      "wool",
+      "acrylic"
+    ],
+    "images": [
+      "assets/products/martial-artists/martial-artists-1.jpg",
+      "assets/products/martial-artists/martial-artists-2.jpg",
+      "assets/products/martial-artists/martial-artists-3.jpg",
+      "assets/products/martial-artists/martial-artists-4.jpg",
+      "assets/products/martial-artists/martial-artists-5.jpg"
+    ],
+    "featured": false,
+    "in_stock": false
+  },
+  {
+    "id": "plankton",
+    "title": "Plankton",
+    "price": 260,
+    "currency": "EUR",
+    "size": "Ø120",
+    "shape": "rectangle",
+    "materials": [
+      "wool",
+      "acrylic"
+    ],
+    "images": [
+      "assets/products/plankton/plankton-1.jpg",
+      "assets/products/plankton/plankton-2.jpg",
+      "assets/products/plankton/plankton-3.jpg",
+      "assets/products/plankton/plankton-4.jpg"
+    ],
+    "featured": false
+  },
+  {
+    "id": "towelie",
+    "title": "Towelie",
+    "price": 350,
+    "currency": "EUR",
+    "size": "160×230",
+    "shape": "rectangle",
+    "materials": [
+      "wool",
+      "acrylic"
+    ],
+    "images": [
+      "assets/products/towelie/towelie-1.jpg",
+      "assets/products/towelie/towelie-2.jpg",
+      "assets/products/towelie/towelie-3.jpg"
+    ],
+    "featured": false
+  },
+  {
+    "id": "æhick",
+    "title": "chick",
+    "price": 300,
+    "currency": "EUR",
+    "size": "120×170",
+    "shape": "rectangle",
+    "materials": [
+      "wool",
+      "acrylic"
+    ],
+    "images": [
+      "assets/products/æhick/æhick-1.jpg",
+      "assets/products/æhick/æhick-2.jpg",
+      "assets/products/æhick/æhick-3.jpg",
+      "assets/products/æhick/æhick-4.jpg"
+    ],
+    "featured": false,
+    "in_stock": false
+  }
+]
