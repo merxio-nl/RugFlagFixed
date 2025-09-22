@@ -80,21 +80,14 @@ h1{font-size:46px;line-height:1.04;margin:0 0 10px}h2{font-size:28px;margin:0 0 
 /* removed dark theme rule */}
 
 
-/* === Patch 02: Mobile Nav fixes === */
-.burger{display:none !important;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--border);border-radius:12px;background:#fff}
-.burger .line{display:block;width:22px;height:2px;border-radius:2px;background:#111}
-.burger .line + .line{margin-top:5px}
-
-/* slide panel base */
-.mnav{position:fixed;inset:0;z-index:90;display:block}
-.mnav[hidden]{display:none}
-.mnav-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.32);backdrop-filter:saturate(140%) blur(2px)}
-.mnav-panel{position:absolute;top:0;right:0;height:100%;width:78%;max-width:340px;background:#fff;border-left:1px solid var(--border);padding:16px;display:flex;flex-direction:column;gap:8px;overflow:auto}
-.mnav-panel a{padding:12px 8px;border-radius:10px}
-.mnav-panel a:hover{background:#f2f2f3}
-
-/* Only on phones/tablets */
+/* === Patch 03: Lightweight mobile top nav (no burger) === */
 @media (max-width: 768px){
-  .menu{display:none !important;}
-  .burger{display:inline-flex !important;}
+  .nav{position:sticky;top:0;background:#fff;z-index:50;border-bottom:1px solid var(--border)}
+  .menu{display:flex;gap:12px;overflow-x:auto;white-space:nowrap;padding:8px 8px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .menu::-webkit-scrollbar{display:none}
+  .menu a{display:inline-block;padding:8px 12px;border:1px solid var(--border);border-radius:999px;font-size:14px;line-height:18px}
+  /* Hide language control inside the scroll menu; leave the header's main language switch as on desktop */
+  .menu .lang, .menu .lang-switch, .menu a.lang, .menu [data-lang]{display:none !important}
+  /* Hide any burger/mnav leftovers in case старые патчи установлены */
+  .burger, .mnav{display:none !important}
 }
