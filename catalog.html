@@ -1,44 +1,58 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <title>Catalog — RUGFLAG</title><meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="style.css">
-<!-- inline-mobile-nav v07 -->
-<style id="inline-mobile-nav-v07">
+<!-- inline-mobile-nav v08 -->
+<style id="inline-mobile-nav-v08">
 @media (max-width: 768px){
-  .nav{position:sticky;top:0;background:#fff;z-index:100;border-bottom:1px solid var(--border);
-       display:flex;align-items:center;gap:8px;padding-right:8px}
-  .nav .menu{display:flex !important;flex:1 1 auto;min-width:0;gap:12px;overflow-x:auto;white-space:nowrap;
-             padding:8px 8px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-  .nav .menu::-webkit-scrollbar{display:none}
-  .nav .menu a{display:inline-block;padding:8px 12px;border:1px solid var(--border);border-radius:999px;
-               font-size:14px;line-height:18px}
-  .nav .menu .lang,.nav .menu .lang-switch,.nav .menu a.lang,.nav .menu [data-lang]{display:none !important}
-  .burger,.mnav{display:none !important}
+  /* Dark, translucent mobile header */
+  .nav{
+    position:sticky; top:0; z-index:100;
+    display:flex; align-items:center; gap:8px; padding:10px 8px 10px 8px;
+    background:rgba(0,0,0,.62);
+    backdrop-filter:saturate(140%) blur(6px);
+    -webkit-backdrop-filter:saturate(140%) blur(6px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  /* keep logo round & correct aspect */
+  .nav img, .nav .logo, .nav .brand img{
+    width:28px; height:28px; aspect-ratio:1/1;
+    border-radius:999px; object-fit:cover;
+  }
+  .nav .menu{
+    display:flex !important; flex:1 1 auto; min-width:0;
+    gap:10px; overflow-x:auto; white-space:nowrap; padding:0 4px;
+    -webkit-overflow-scrolling:touch; scrollbar-width:none;
+  }
+  .nav .menu::-webkit-scrollbar{ display:none }
+  .nav .menu a{
+    display:inline-block; padding:8px 12px; border-radius:999px;
+    border:1px solid rgba(255,255,255,.28);
+    color:#fff; text-decoration:none; line-height:18px; font-size:14px;
+    background:transparent;
+  }
+  .nav .menu a:active,
+  .nav .menu a:hover{ background:rgba(255,255,255,.08) }
+  /* hide language toggles inside row */
+  .nav .menu .lang, .nav .menu .lang-switch, .nav .menu a.lang, .nav .menu [data-lang]{ display:none !important }
+  /* kill any burger leftovers */
+  .burger, .mnav{ display:none !important }
 }
 </style>
-<script id="inline-mobile-nav-v07">
+<script id="inline-mobile-nav-v08">
 (function(){
   function apply(){
     if(window.innerWidth>768) return;
     var nav=document.querySelector('.nav'); if(!nav) return;
     var menu=nav.querySelector('.menu'); if(!menu) return;
-    var cs = window.getComputedStyle(menu);
+    // enforce layout even if external CSS hides menu
+    var cs=getComputedStyle(menu);
     if(cs.display==='none' || cs.display===''){ menu.style.display='flex'; }
-    Object.assign(menu.style, {
-      flex:'1 1 auto', minWidth:'0', gap:'12px', overflowX:'auto',
-      whiteSpace:'nowrap', padding:'8px 8px', WebkitOverflowScrolling:'touch'
-    });
-    Object.assign(nav.style, {
-      display:'flex', alignItems:'center', gap:'8px', paddingRight:'8px',
-      position:'sticky', top:'0', background:'#fff', zIndex:'100',
-      borderBottom:'1px solid var(--border)'
-    });
-    menu.querySelectorAll('.lang, .lang-switch, a.lang, [data-lang]').forEach(function(el){
-      el.style.display='none';
-    });
-    document.querySelectorAll('.burger, .mnav').forEach(function(el){
-      el.style.display='none';
-    });
-    document.body.classList.add('mobile-inline-nav-v07');
+    Object.assign(menu.style, { flex:'1 1 auto', minWidth:'0', overflowX:'auto', whiteSpace:'nowrap' });
+    // hide language toggles inside
+    menu.querySelectorAll('.lang, .lang-switch, a.lang, [data-lang]').forEach(function(el){ el.style.display='none'; });
+    // ensure logo is round
+    var lg = nav.querySelector('img');
+    if(lg){ lg.style.width='28px'; lg.style.height='28px'; lg.style.borderRadius='999px'; lg.style.objectFit='cover'; }
   }
   document.addEventListener('DOMContentLoaded', apply);
   window.addEventListener('resize', apply);
