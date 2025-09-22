@@ -1,6 +1,51 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <title>Product — RUGFLAG</title><meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="style.css"></head><body><header class="header"><div class="container nav">
+<link rel="stylesheet" href="style.css">
+<!-- inline-mobile-nav v07 -->
+<style id="inline-mobile-nav-v07">
+@media (max-width: 768px){
+  .nav{position:sticky;top:0;background:#fff;z-index:100;border-bottom:1px solid var(--border);
+       display:flex;align-items:center;gap:8px;padding-right:8px}
+  .nav .menu{display:flex !important;flex:1 1 auto;min-width:0;gap:12px;overflow-x:auto;white-space:nowrap;
+             padding:8px 8px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .nav .menu::-webkit-scrollbar{display:none}
+  .nav .menu a{display:inline-block;padding:8px 12px;border:1px solid var(--border);border-radius:999px;
+               font-size:14px;line-height:18px}
+  .nav .menu .lang,.nav .menu .lang-switch,.nav .menu a.lang,.nav .menu [data-lang]{display:none !important}
+  .burger,.mnav{display:none !important}
+}
+</style>
+<script id="inline-mobile-nav-v07">
+(function(){
+  function apply(){
+    if(window.innerWidth>768) return;
+    var nav=document.querySelector('.nav'); if(!nav) return;
+    var menu=nav.querySelector('.menu'); if(!menu) return;
+    var cs = window.getComputedStyle(menu);
+    if(cs.display==='none' || cs.display===''){ menu.style.display='flex'; }
+    Object.assign(menu.style, {
+      flex:'1 1 auto', minWidth:'0', gap:'12px', overflowX:'auto',
+      whiteSpace:'nowrap', padding:'8px 8px', WebkitOverflowScrolling:'touch'
+    });
+    Object.assign(nav.style, {
+      display:'flex', alignItems:'center', gap:'8px', paddingRight:'8px',
+      position:'sticky', top:'0', background:'#fff', zIndex:'100',
+      borderBottom:'1px solid var(--border)'
+    });
+    menu.querySelectorAll('.lang, .lang-switch, a.lang, [data-lang]').forEach(function(el){
+      el.style.display='none';
+    });
+    document.querySelectorAll('.burger, .mnav').forEach(function(el){
+      el.style.display='none';
+    });
+    document.body.classList.add('mobile-inline-nav-v07');
+  }
+  document.addEventListener('DOMContentLoaded', apply);
+  window.addEventListener('resize', apply);
+})();
+</script>
+
+</head><body><header class="header"><div class="container nav">
 <a class="brand" href="index.html"><img src="images/logo.png" alt="RUGFLAG"></a>
 <nav class="menu">
   <a href="index.html">Home</a>
