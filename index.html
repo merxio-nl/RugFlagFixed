@@ -1,50 +1,55 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <title>RUGFLAG — Handmade Rugs</title><meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="style.css">
-<!-- inline-mobile-nav v09 -->
-<style id="inline-mobile-nav-v09">
+<!-- inline-mobile-nav v10 -->
+<style id="inline-mobile-nav-v10">
 @media (max-width: 768px){
-  /* Revert to light header (use original .header background) */
-  .nav{
-    position:sticky; top:0; z-index:100;
-    display:flex; align-items:center; gap:8px; padding-right:8px;
-    background:transparent !important;
+  /* Light header (as original) */
+  .nav{position:sticky; top:0; z-index:100; display:flex; align-items:center; gap:8px; padding-right:8px; background:transparent !important;}
+  /* Horizontal pills */
+  .nav .menu{display:flex !important; flex:1 1 auto; min-width:0; gap:12px; overflow-x:auto; white-space:nowrap; padding:8px 8px; -webkit-overflow-scrolling:touch; scrollbar-width:none}
+  .nav .menu::-webkit-scrollbar{display:none}
+  .nav .menu a{display:inline-block; padding:8px 12px; border-radius:999px; border:1px solid var(--border); background:#fff; color:inherit; text-decoration:none; line-height:18px; font-size:14px}
+  .nav .menu .lang, .nav .menu .lang-switch, .nav .menu a.lang, .nav .menu [data-lang]{display:none !important}
+
+  /* === ROUND LOGO: container mask approach === */
+  /* Target common brand containers safely */
+  .nav .brand, .nav a.brand, .nav .logo, .nav a.logo, .nav > a:first-child{
+    width:32px !important; height:32px !important;
+    border-radius:50% !important; overflow:hidden !important;
+    flex:0 0 32px !important; padding:0 !important; border:0 !important; background:none !important;
+    display:block;
   }
-  /* Horizontal pills menu */
-  .nav .menu{
-    display:flex !important; flex:1 1 auto; min-width:0;
-    gap:12px; overflow-x:auto; white-space:nowrap; padding:8px 8px;
-    -webkit-overflow-scrolling:touch; scrollbar-width:none;
+  /* Image inside brand becomes cover-fitted */
+  .nav .brand img, .nav a.brand img, .nav .logo img, .nav a.logo img, .nav > a:first-child > img{
+    display:block !important; width:100% !important; height:100% !important;
+    object-fit:cover !important; border-radius:50% !important;
   }
-  .nav .menu::-webkit-scrollbar{ display:none }
-  .nav .menu a{
-    display:inline-block; padding:8px 12px; border-radius:999px;
-    border:1px solid var(--border);
-    background:#fff; color:inherit; text-decoration:none; line-height:18px; font-size:14px;
-  }
-  /* Hide language toggles inside the row */
-  .nav .menu .lang, .nav .menu .lang-switch, .nav .menu a.lang, .nav .menu [data-lang]{ display:none !important }
-  /* Round logo, fixed square box */
-  .brand img{
-    width:30px !important; height:30px !important; border-radius:50% !important;
-    object-fit:cover; display:block;
-  }
-  /* Cleanup any legacy burger */
-  .burger, .mnav{ display:none !important }
+
+  /* Kill legacy burger */
+  .burger, .mnav{display:none !important}
 }
 </style>
-<script id="inline-mobile-nav-v09">
+<script id="inline-mobile-nav-v10">
 (function(){
   function apply(){
     if(window.innerWidth>768) return;
-    var brand = document.querySelector('.brand img');
-    if(brand){
-      brand.style.width='30px'; brand.style.height='30px';
-      brand.style.borderRadius='50%'; brand.style.objectFit='cover'; brand.style.display='block';
+    // container mask enforcement
+    var candidates = document.querySelectorAll('.nav .brand, .nav a.brand, .nav .logo, .nav a.logo, .nav > a:first-child');
+    if(candidates.length){
+      candidates.forEach(function(el){
+        el.style.width='32px'; el.style.height='32px'; el.style.borderRadius='50%';
+        el.style.overflow='hidden'; el.style.flex='0 0 32px'; el.style.padding='0'; el.style.border='0'; el.style.background='none';
+      });
     }
+    var imgs = document.querySelectorAll('.nav .brand img, .nav a.brand img, .nav .logo img, .nav a.logo img, .nav > a:first-child > img');
+    imgs.forEach(function(img){
+      img.style.width='100%'; img.style.height='100%'; img.style.objectFit='cover'; img.style.borderRadius='50%'; img.style.display='block';
+    });
+    // ensure menu visible
     var menu = document.querySelector('.nav .menu');
     if(menu){
-      var cs=getComputedStyle(menu);
+      var cs = getComputedStyle(menu);
       if(cs.display==='none' || cs.display===''){ menu.style.display='flex'; }
     }
   }
