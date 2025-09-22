@@ -123,6 +123,8 @@ function applyReveals(){
 
 /* ---------- boot ---------- */
 document.addEventListener('DOMContentLoaded', ()=>{
+  setupMobileNav();
+
   qsa('[data-telegram]').forEach(a => a.href = TELEGRAM);
   renderFeatured(); renderCatalog(); renderProduct(); applyReveals();
 });
@@ -130,3 +132,66 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
 /* dark toggle removed */
 
+
+/* ---------- mobile nav ---------- */
+function setupMobileNav(){
+  const nav = qs('.nav'); if(!nav) return;
+  const menu = qs('.menu', nav); if(!menu) return;
+
+  // Create burger button
+  const btn = document.createElement('button');
+  btn.className = 'burger';
+  btn.setAttribute('aria-label','Open menu');
+  btn.setAttribute('aria-controls','mnav');
+  btn.setAttribute('aria-expanded','false');
+  btn.innerHTML = '<span></span><span></span><span></span>';
+  // Insert before menu
+  nav.insertBefore(btn, menu);
+
+  // Create mobile nav container
+  const wrap = document.createElement('div');
+  wrap.id = 'mnav';
+  wrap.className = 'mnav';
+  wrap.setAttribute('hidden','');
+  wrap.innerHTML = '<div class="mnav-backdrop" data-close></div><nav class="mnav-panel"></nav>';
+  document.body.appendChild(wrap);
+
+  // Clone desktop links into panel
+  const panel = qs('.mnav-panel', wrap);
+  qsa('a, span.lang', menu).forEach(node => {
+    const cloned = node.cloneNode(true);
+    panel.appendChild(cloned);
+  });
+  // assign Telegram href inside panel if needed
+  qsa('[data-telegram]', panel).forEach(a => a.href = TELEGRAM);
+
+  function open(){
+    wrap.hidden = false;
+    document.body.classList.add('nav-open');
+    btn.setAttribute('aria-expanded','true');
+    // lock scroll
+    document.documentElement.style.overflow = 'hidden';
+  }
+  function close(){
+    wrap.hidden = true;
+    document.body.classList.remove('nav-open');
+    btn.setAttribute('aria-expanded','false');
+    document.documentElement.style.overflow = '';
+  }
+
+  btn.addEventListener('click', ()=>{
+    if(wrap.hidden) open(); else close();
+  });
+  wrap.addEventListener('click', (e)=>{
+    if(e.target.matches('[data-close]')) close();
+  });
+  // Close on link click
+  panel.addEventListener('click',(e)=>{
+    if(e.target.closest('a')) close();
+  });
+  // ESC to close
+  document.addEventListener('keydown',(e)=>{ if(e.key==='Escape') close(); });
+
+  // expose for debugging
+  window._mobileNav = {open, close};
+}

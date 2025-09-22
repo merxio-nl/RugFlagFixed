@@ -78,3 +78,21 @@ h1{font-size:46px;line-height:1.04;margin:0 0 10px}h2{font-size:28px;margin:0 0 
 /* removed dark theme rule */}
 /* removed dark theme rule */}
 /* removed dark theme rule */}
+
+
+/* --- mobile nav --- */
+.burger{display:none;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--border);border-radius:10px;background:#fff}
+.burger span{display:block;width:20px;height:2px;background:#111;border-radius:2px}
+.burger span+span{margin-top:4px}
+.mnav{position:fixed;inset:0;z-index:90;display:block}
+.mnav[hidden]{display:none}
+.mnav-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.32);backdrop-filter:saturate(140%) blur(2px)}
+.mnav-panel{position:absolute;top:0;right:0;height:100%;width:78%;max-width:340px;background:#fff;border-left:1px solid var(--border);padding:16px;display:flex;flex-direction:column;gap:8px;overflow:auto}
+.mnav-panel a,.mnav-panel .lang{padding:12px 8px;border-radius:10px}
+.mnav-panel a:hover{background:#f2f2f3}
+
+/* responsive visibility */
+@media(max-width: 620px){
+  .menu{display:none}
+  .burger{display:inline-flex}
+}
