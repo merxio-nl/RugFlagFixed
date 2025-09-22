@@ -80,14 +80,16 @@ h1{font-size:46px;line-height:1.04;margin:0 0 10px}h2{font-size:28px;margin:0 0 
 /* removed dark theme rule */}
 
 
-/* === Patch 03: Lightweight mobile top nav (no burger) === */
+/* === Patch 04: Ensure lightweight mobile menu is visible === */
 @media (max-width: 768px){
-  .nav{position:sticky;top:0;background:#fff;z-index:50;border-bottom:1px solid var(--border)}
-  .menu{display:flex;gap:12px;overflow-x:auto;white-space:nowrap;padding:8px 8px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-  .menu::-webkit-scrollbar{display:none}
-  .menu a{display:inline-block;padding:8px 12px;border:1px solid var(--border);border-radius:999px;font-size:14px;line-height:18px}
-  /* Hide language control inside the scroll menu; leave the header's main language switch as on desktop */
-  .menu .lang, .menu .lang-switch, .menu a.lang, .menu [data-lang]{display:none !important}
-  /* Hide any burger/mnav leftovers in case старые патчи установлены */
+  /* Make header a simple row: logo + scroll menu + (language switch separate outside header as in golden) */
+  .nav{position:sticky;top:0;background:#fff;z-index:50;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;padding-right:8px}
+  /* force-show menu in case older rules hid it */
+  .nav .menu{display:flex !important;flex:1 1 auto;min-width:0;gap:12px;overflow-x:auto;white-space:nowrap;padding:8px 8px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .nav .menu::-webkit-scrollbar{display:none}
+  .nav .menu a{display:inline-block;padding:8px 12px;border:1px solid var(--border);border-radius:999px;font-size:14px;line-height:18px}
+  /* keep language control out of the scroll menu (desktop-only position) */
+  .nav .menu .lang, .nav .menu .lang-switch, .nav .menu a.lang, .nav .menu [data-lang]{display:none !important}
+  /* kill any burger/mnav leftovers */
   .burger, .mnav{display:none !important}
 }
