@@ -80,16 +80,28 @@ h1{font-size:46px;line-height:1.04;margin:0 0 10px}h2{font-size:28px;margin:0 0 
 /* removed dark theme rule */}
 
 
-/* === Patch 04: Ensure lightweight mobile menu is visible === */
+/* === Patch 05: Mobile menu hard override + visible debug badge === */
 @media (max-width: 768px){
-  /* Make header a simple row: logo + scroll menu + (language switch separate outside header as in golden) */
-  .nav{position:sticky;top:0;background:#fff;z-index:50;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;padding-right:8px}
-  /* force-show menu in case older rules hid it */
-  .nav .menu{display:flex !important;flex:1 1 auto;min-width:0;gap:12px;overflow-x:auto;white-space:nowrap;padding:8px 8px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  /* Visible CSS version badge in the corner to verify fresh CSS */
+  body::after{
+    content:"CSS v05";
+    position:fixed; bottom:10px; right:10px;
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+    font-size:12px; line-height:1;
+    color:#fff; background:#111; padding:6px 8px; border-radius:8px; z-index:9999; opacity:.85;
+    pointer-events:none;
+  }
+
+  /* Force header layout + show the horizontal menu no matter what older rules say */
+  .nav{position:sticky;top:0;background:#fff;z-index:50;border-bottom:1px solid var(--border);
+       display:flex !important; align-items:center; gap:8px; padding-right:8px}
+  .nav .menu{display:flex !important; flex:1 1 auto; min-width:0; gap:12px; overflow-x:auto; white-space:nowrap;
+             padding:8px 8px; -webkit-overflow-scrolling:touch; scrollbar-width:none}
   .nav .menu::-webkit-scrollbar{display:none}
-  .nav .menu a{display:inline-block;padding:8px 12px;border:1px solid var(--border);border-radius:999px;font-size:14px;line-height:18px}
-  /* keep language control out of the scroll menu (desktop-only position) */
+  .nav .menu a{display:inline-block; padding:8px 12px; border:1px solid var(--border); border-radius:999px;
+               font-size:14px; line-height:18px}
   .nav .menu .lang, .nav .menu .lang-switch, .nav .menu a.lang, .nav .menu [data-lang]{display:none !important}
-  /* kill any burger/mnav leftovers */
+
+  /* Safety: hide burger-related legacy */
   .burger, .mnav{display:none !important}
 }

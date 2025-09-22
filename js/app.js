@@ -130,3 +130,17 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
 /* dark toggle removed */
 
+
+
+/* === Patch 05 JS marker === */
+document.addEventListener('DOMContentLoaded', ()=>{
+  try{
+    const nav = document.querySelector('.nav');
+    const menu = nav ? nav.querySelector('.menu') : null;
+    console.log('[RugFlag] JS v05 loaded. viewport=', window.innerWidth, 'menu=', menu);
+    if(menu){
+      const cs = getComputedStyle(menu);
+      console.log('[RugFlag] menu display:', cs.display, 'overflowX:', cs.overflowX);
+    }
+  }catch(e){ console.log('[RugFlag] JS v05 error', e); }
+});
