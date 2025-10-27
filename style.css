@@ -78,6 +78,3 @@ h1{font-size:46px;line-height:1.04;margin:0 0 10px}h2{font-size:28px;margin:0 0 
 /* removed dark theme rule */}
 /* removed dark theme rule */}
 /* removed dark theme rule */}
-
-/* phase1: rotate logo -90deg */
-.brand img{transform:rotate(-90deg);transform-origin:center center;}
